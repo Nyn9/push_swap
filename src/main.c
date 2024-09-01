@@ -3,74 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nferrad <nferrad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: clouaint <clouaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 15:52:52 by nferrad           #+#    #+#             */
-/*   Updated: 2024/08/28 15:33:18 by nferrad          ###   ########.fr       */
+/*   Created: 2024/07/30 13:07:42 by clouaint          #+#    #+#             */
+/*   Updated: 2024/08/29 16:43:40 by clouaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int    lstsize(t_stack *lst)
-{
-    t_stack *first;
-    int    i;
-
-    i = 0;
-    first = lst;
-    while (lst->next != first)
-    {
-        i++;
-        lst = lst->next;
-    }
-    return (i);
-}
-
-t_stack    *lstnew(long content)
-{
-    t_stack    *element;
-
-    element = malloc(sizeof(t_stack));
-    if (!element)
-        return (NULL);
-    element->n = content;
-    element->next = NULL;
-    element->prev = NULL;
-    return (element);
-}
-
-t_stack    *lstlast(t_stack *lst)
-{
-    t_stack    *first;
-
-    first = lst;
-    while (lst->next != first)
-        lst = lst->next;
-    return (lst);
-}
-
-void    lstadd_back(t_stack **lst, t_stack *new)
-{
-    t_stack    *last;
-
-    if (!lst || !new)
-        return ;
-    if (!*lst)
-    {
-        *lst = new;
-        new->next = new;
-        new->prev = new;
-    }
-    else
-    {
-        (*lst)->prev = new;
-        last = lstlast(*lst);
-        new->next = last->next;
-        last->next = new;
-        new->prev = last;
-    }
-}
 
 void new_print_stack(t_stack *a, t_stack *b)
 {
@@ -104,39 +44,63 @@ void new_print_stack(t_stack *a, t_stack *b)
     ft_printf("\n");
 }
 
-void print_stack(t_stack *stack)
+void	lstclear(t_stack **lst)
 {
-    t_stack    *first;
-    int    i;
+	int		i;	
+	t_stack	*memory;
+	t_stack	*temp;
 
-    i = 0;
-    first = stack;
-    while (stack && (stack != first || !i))
-    {
-        printf("Value: %ld\n", stack->n);
-        stack = stack->next;
-        i++;
-    }
-    ft_printf("\n");
+	i = 0;
+	if (!lst)
+		return ;
+	memory = (*lst)->next;
+    while (memory != *lst)
+	{
+		temp = memory->next;
+		free(memory);
+		memory = temp;
+		i++;
+	}
+	free(*lst);
 }
+
+void	freestr(char **lst)
+{
+	char	*tmp;
+
+	if (!lst)
+		return ;
+	while (*lst)
+	{
+		tmp = *lst;
+		lst++;
+		free(tmp);
+	}
+	*lst = NULL;
+}
+
 
 int main(int argc, char **argv)
 {
-    t_stack			*a;
-    t_stack			*b;
-    long			i;
+	t_stack		*a;
+	t_stack		*b;
 
-    i = 0;
-    a = NULL;
-    b = NULL;
-    if (argc <= 1)
-        return (-1);
-    while (++i < argc)
-        lstadd_back(&a, lstnew(ft_atoi(argv[i])));
-    push(&a, &b, B);
-    push(&a, &b, B);
-    push_number_to_b(&a, &b);
-    push_number_to_a(&a, &b);
-    new_print_stack(a, b);
-    return (0);
+	b = NULL;
+	a = fill_a(argc, argv);
+	if (!a || is_sort(a) || is_duplicate(a))
+	{
+		lstclear(&a);
+		return (-1);
+	}
+	if (stack_size(a) < 4)
+		sort_a(&a);
+	else
+	{
+		push(&a, &b, B);
+		push(&a, &b, B);
+		push_number_to_b(&a, &b);
+	}
+	// new_print_stack(a, b);
+	lstclear(&a);
+	return (0);
 }
