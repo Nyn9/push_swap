@@ -6,7 +6,7 @@
 /*   By: nferrad <nferrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:25:57 by nferrad           #+#    #+#             */
-/*   Updated: 2024/09/01 16:32:44 by nferrad          ###   ########.fr       */
+/*   Updated: 2024/09/01 17:31:27 by nferrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	push_number_to_b(t_stack **a, t_stack **b)
 		push(a, b, B);
 	}
 	sort_a(a);
+	push_number_to_a(a, b);
 }
 
 void	sort_a(t_stack **a)

@@ -6,7 +6,7 @@
 /*   By: nferrad <nferrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 16:03:09 by nferrad           #+#    #+#             */
-/*   Updated: 2024/09/01 16:25:29 by nferrad          ###   ########.fr       */
+/*   Updated: 2024/09/01 17:32:12 by nferrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ typedef struct s_stack
 }					t_stack;
 
 // void print_stack(t_stack *stack);
-// void new_print_stack(t_stack *a, t_stack *b);
-int		swap(t_stack **stack, int letter);
-int		rotate(t_stack **stack, int rotate, int letter);
+// void	new_print_stack(t_stack *a, t_stack *b);
+void	swap(t_stack **stack, int letter);
+void	rotate(t_stack **stack, int rotate, int letter);
 void	push(t_stack **src, t_stack **dest, int letter);
 int		cheapest(t_stack **a, t_stack **b);
 int		max(t_stack *stack);
@@ -47,5 +47,11 @@ void	push_number(t_stack **a, t_stack **b, int target_b, int cheap);
 void	sort_a(t_stack **a);
 void	push_number_to_a(t_stack **a, t_stack **b);
 void	push_number_to_b(t_stack **a, t_stack **b);
+t_stack	*fill_a(int ac, char **av);
+int		is_sort(t_stack *stack);
+int		is_duplicate(t_stack *a);
+int		my_atoi(const char *nptr);
+void	freestr(char **lst);
+void	error(void);
 
 #endif

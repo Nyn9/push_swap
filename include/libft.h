@@ -6,7 +6,7 @@
 /*   By: nferrad <nferrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 16:29:52 by nferrad           #+#    #+#             */
-/*   Updated: 2024/08/06 00:04:10 by nferrad          ###   ########.fr       */
+/*   Updated: 2024/09/01 17:26:35 by nferrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdarg.h>
 # include <signal.h>
 # include <fcntl.h>
+# include <limits.h>
 
 /* Utils functions */
 

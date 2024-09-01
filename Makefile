@@ -16,7 +16,7 @@ LIBPATH = lib/
 LIB = $(addprefix $(LIBPATH), $(LIBFT))
 
 NAME = push_swap
-SRCS = main.c operations.c count.c utils.c sort.c
+SRCS = main.c operations.c count.c utils.c sort.c fill_stack.c errors.c
 SRC_DIR = src/
 SRC = $(addprefix $(SRC_DIR), $(SRCS))
 OBJ = $(SRC:.c=.o)

@@ -3,46 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clouaint <clouaint@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nferrad <nferrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 13:07:42 by clouaint          #+#    #+#             */
-/*   Updated: 2024/08/29 16:43:40 by clouaint         ###   ########.fr       */
+/*   Updated: 2024/09/01 17:31:55 by nferrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void new_print_stack(t_stack *a, t_stack *b)
-{
-    int i = 0;
-    t_stack *firstA = a;
-    t_stack *firstB = b;
-    int size = stack_size(a);
-    if (stack_size(b) > size)
-        size = stack_size(b);
-    ft_printf("\nA\t\tB\n\n");
-    while (i <= size)
-    {
-        if (a != firstA || !i)
-        {
-            ft_printf("%d", a->n);
-            a = a->next;
-        }
-        else
-            ft_printf(" ");
-        ft_printf("\t\t");
-        if (b && (b != firstB || !i))
-        {
-            ft_printf("%d", b->n);
-            b = b->next;
-        }
-        else
-            ft_printf(" ");
-        ft_printf("\n");
-        i++;
-    }
-    ft_printf("\n");
-}
+// void	new_print_stack(t_stack *a, t_stack *b)
+// {
+//     int i = 0;
+//     t_stack *firstA = a;
+//     t_stack *firstB = b;
+//     int size = stack_size(a);
+//     if (stack_size(b) > size)
+//         size = stack_size(b);
+//     ft_printf("\nA\t\tB\n\n");
+//     while (i <= size)
+//     {
+//         if (a != firstA || !i)
+//         {
+//             ft_printf("%d", a->n);
+//             a = a->next;
+//         }
+//         else
+//             ft_printf(" ");
+//         ft_printf("\t\t");
+//         if (b && (b != firstB || !i))
+//         {
+//             ft_printf("%d", b->n);
+//             b = b->next;
+//         }
+//         else
+//             ft_printf(" ");
+//         ft_printf("\n");
+//         i++;
+//     }
+//     ft_printf("\n");
+// }
 
 void	lstclear(t_stack **lst)
 {
@@ -54,7 +54,7 @@ void	lstclear(t_stack **lst)
 	if (!lst)
 		return ;
 	memory = (*lst)->next;
-    while (memory != *lst)
+	while (memory != *lst)
 	{
 		temp = memory->next;
 		free(memory);
@@ -79,8 +79,7 @@ void	freestr(char **lst)
 	*lst = NULL;
 }
 
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stack		*a;
 	t_stack		*b;
@@ -100,7 +99,6 @@ int main(int argc, char **argv)
 		push(&a, &b, B);
 		push_number_to_b(&a, &b);
 	}
-	// new_print_stack(a, b);
 	lstclear(&a);
 	return (0);
 }

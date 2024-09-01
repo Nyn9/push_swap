@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clouaint <clouaint@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nferrad <nferrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:36:40 by clouaint          #+#    #+#             */
-/*   Updated: 2024/08/29 17:58:06 by clouaint         ###   ########.fr       */
+/*   Updated: 2024/09/01 17:33:30 by nferrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,9 @@ int	my_atoi(const char *nptr)
 
 	sign = 1;
 	res = 0;
-	while (*nptr == 32 || (*nptr >= 9 && *nptr <= 13))
+	while (*nptr == 32 || (*nptr >= 9 && *nptr <= 13) || *nptr == '+')
 		nptr++;
-	if (*nptr == '+')
-		nptr++;
-	else if (*nptr == '-')
+	if (*nptr == '-')
 	{
 		sign *= -1;
 		nptr++;
@@ -89,4 +87,3 @@ void	error(void)
 	write(2, "Error\n", 6);
 	exit(1);
 }
-
