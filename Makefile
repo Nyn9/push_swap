@@ -11,10 +11,12 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -I./include/
 RM = rm -rf
 
+# Libft #
 LIBFT = libft.a
 LIBPATH = lib/
 LIB = $(addprefix $(LIBPATH), $(LIBFT))
 
+# Src #
 NAME = push_swap
 SRCS = main.c operations.c count.c utils.c sort.c fill_stack.c errors.c
 SRC_DIR = src/

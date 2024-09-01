@@ -6,7 +6,7 @@
 /*   By: nferrad <nferrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 16:03:09 by nferrad           #+#    #+#             */
-/*   Updated: 2024/09/01 17:32:12 by nferrad          ###   ########.fr       */
+/*   Updated: 2024/09/01 20:13:21 by nferrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_stack
 }					t_stack;
 
 // void print_stack(t_stack *stack);
-// void	new_print_stack(t_stack *a, t_stack *b);
+void	new_print_stack(t_stack *a, t_stack *b);
 void	swap(t_stack **stack, int letter);
 void	rotate(t_stack **stack, int rotate, int letter);
 void	push(t_stack **src, t_stack **dest, int letter);
@@ -50,8 +50,9 @@ void	push_number_to_b(t_stack **a, t_stack **b);
 t_stack	*fill_a(int ac, char **av);
 int		is_sort(t_stack *stack);
 int		is_duplicate(t_stack *a);
-int		my_atoi(const char *nptr);
+int		my_atoi(char *nptr);
 void	freestr(char **lst);
-void	error(void);
+void	lstclear(t_stack **lst);
+void	error(int nb, t_stack **stack, char *c, char **element);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nferrad <nferrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:36:40 by clouaint          #+#    #+#             */
-/*   Updated: 2024/09/01 17:33:30 by nferrad          ###   ########.fr       */
+/*   Updated: 2024/09/01 20:17:04 by nferrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ int	my_atoi(char *nptr)
 	return (res * sign);
 }
 
-void	error(int nb,  t_stack **stack, char **element)
+void	error(int nb, t_stack **stack, char *c, char **element)
 {
-	if (!nb)
+	if (!nb && c[0] != '0')
 	{
 		lstclear(stack);
 		freestr(element);

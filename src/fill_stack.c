@@ -6,7 +6,7 @@
 /*   By: nferrad <nferrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 15:12:14 by clouaint          #+#    #+#             */
-/*   Updated: 2024/09/01 17:28:57 by nferrad          ###   ########.fr       */
+/*   Updated: 2024/09/01 20:13:58 by nferrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ t_stack	*fill_a(int ac, char **av)
 		while (element[i])
 		{
 			lstadd_back(&a, lstnew(my_atoi(element[i])));
-			error(my_atoi(element[i]), &a, element);
+			error(my_atoi(element[i]), &a, element[i], element);
 			i++;
 		}
 		freestr(element);
@@ -97,7 +97,7 @@ t_stack	*fill_a(int ac, char **av)
 		while (++i < ac)
 		{
 			lstadd_back(&a, lstnew(my_atoi(av[i])));
-			error(my_atoi(av[i]), &a, NULL);
+			error(my_atoi(av[i]), &a, av[i], NULL);
 		}
 	}
 	return (a);
