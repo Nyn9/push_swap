@@ -53,7 +53,7 @@ int	is_sort(t_stack *stack)
 	return (1);
 }
 
-int	my_atoi(const char *nptr)
+int	my_atoi(char *nptr)
 {
 	long long int	res;
 	int				sign;
@@ -68,22 +68,28 @@ int	my_atoi(const char *nptr)
 		nptr++;
 	}
 	if (!ft_isdigit(*nptr))
-		error();
+		return (0);
 	while (*nptr)
 	{
 		if (!ft_isdigit(*nptr))
-			error();
+			return (0);
 		res *= 10;
 		res += *nptr - '0';
 		nptr++;
 	}
 	if ((res * sign) > INT_MAX || (res * sign < INT_MIN))
-		error();
+		return (0);
 	return (res * sign);
 }
 
-void	error(void)
+void	error(int nb,  t_stack **stack, char **element)
 {
-	write(2, "Error\n", 6);
-	exit(1);
+	if (!nb)
+	{
+		lstclear(stack);
+		freestr(element);
+		free(element);
+		write(2, "Error\n", 6);
+		exit(1);
+	}
 }

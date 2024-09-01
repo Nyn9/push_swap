@@ -80,14 +80,13 @@ t_stack	*fill_a(int ac, char **av)
 
 	i = 0;
 	a = NULL;
-	if (ac < 2)
-		exit(1);
 	if (ac == 2)
 	{
 		element = ft_split(av[1], ' ');
 		while (element[i])
 		{
 			lstadd_back(&a, lstnew(my_atoi(element[i])));
+			error(my_atoi(element[i]), &a, element);
 			i++;
 		}
 		freestr(element);
@@ -96,7 +95,10 @@ t_stack	*fill_a(int ac, char **av)
 	else
 	{
 		while (++i < ac)
+		{
 			lstadd_back(&a, lstnew(my_atoi(av[i])));
+			error(my_atoi(av[i]), &a, NULL);
+		}
 	}
 	return (a);
 }

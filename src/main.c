@@ -76,6 +76,7 @@ void	freestr(char **lst)
 		lst++;
 		free(tmp);
 	}
+	free(*lst);
 	*lst = NULL;
 }
 
@@ -85,13 +86,15 @@ int	main(int argc, char **argv)
 	t_stack		*b;
 
 	b = NULL;
+	if (argc < 2)
+		return (-1);
 	a = fill_a(argc, argv);
 	if (!a || is_sort(a) || is_duplicate(a))
 	{
 		lstclear(&a);
 		return (-1);
 	}
-	if (stack_size(a) < 4)
+	if (stack_size(a) < 3)
 		sort_a(&a);
 	else
 	{
