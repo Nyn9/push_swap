@@ -92,13 +92,10 @@ t_stack	*fill_a(int ac, char **av)
 		freestr(element);
 		free(element);
 	}
-	else
+	while (++i < ac)
 	{
-		while (++i < ac)
-		{
-			lstadd_back(&a, lstnew(my_atoi(av[i])));
-			error(my_atoi(av[i]), &a, av[i], NULL);
-		}
+		lstadd_back(&a, lstnew(my_atoi(av[i])));
+		error(my_atoi(av[i]), &a, av[i], NULL);
 	}
 	return (a);
 }

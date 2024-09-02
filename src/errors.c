@@ -60,11 +60,12 @@ int	my_atoi(char *nptr)
 
 	sign = 1;
 	res = 0;
-	while (*nptr == 32 || (*nptr >= 9 && *nptr <= 13) || *nptr == '+')
+	while (*nptr == 32 || (*nptr >= 9 && *nptr <= 13))
 		nptr++;
-	if (*nptr == '-')
+	if (*nptr == '-' || *nptr == '+')
 	{
-		sign *= -1;
+		if (*nptr == '-')
+			sign *= -1;
 		nptr++;
 	}
 	if (!ft_isdigit(*nptr))
@@ -73,8 +74,7 @@ int	my_atoi(char *nptr)
 	{
 		if (!ft_isdigit(*nptr))
 			return (0);
-		res *= 10;
-		res += *nptr - '0';
+		res = res * 10 + *nptr - '0';
 		nptr++;
 	}
 	if ((res * sign) > INT_MAX || (res * sign < INT_MIN))
