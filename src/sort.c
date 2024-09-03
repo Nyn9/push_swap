@@ -95,20 +95,24 @@ void	push_number_to_a(t_stack **a, t_stack **b)
 {
 	int	i;
 	int	size;
+	int	mini;
+	int	maxi;
 
 	size = stack_size(*b);
 	i = 0;
+	mini = min(*a);
+	maxi = max(*a);
 	while (i <= size)
 	{
-		while (((*b)->n > max(*a) || (*b)->n < min(*a))
-			&& rorr(*a, min(*a)) != -1)
-			rotate(a, rorr(*a, min(*a)), A);
-		while (((*b)->n < max(*a) && (*b)->n > min(*a))
+		while (((*b)->n > maxi || (*b)->n < mini)
+			&& rorr(*a, mini) != -1)
+			rotate(a, rorr(*a, mini), A);
+		while (((*b)->n < maxi && (*b)->n > mini)
 			&& rorr(*a, good_number_a((*b)->n, *a)) != -1)
 			rotate(a, rorr(*a, good_number_a((*b)->n, *a)), A);
 		push(b, a, A);
 		i++;
 	}
-	while (rorr(*a, min(*a)) != -1)
+	while (get_pos(min(*a), *a) != 0)
 		rotate(a, rorr(*a, min(*a)), A);
 }

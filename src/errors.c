@@ -44,7 +44,7 @@ int	is_sort(t_stack *stack)
 	tmpa = stack;
 	while (tmpa)
 	{
-		if (tmpa->n > tmpa->next->n)
+		if (tmpa->n >= tmpa->next->n)
 			return (0);
 		tmpa = tmpa->next;
 		if (tmpa->next == stack)

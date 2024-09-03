@@ -12,37 +12,37 @@
 
 #include "push_swap.h"
 
-// void	new_print_stack(t_stack *a, t_stack *b)
-// {
-//     int i = 0;
-//     t_stack *firstA = a;
-//     t_stack *firstB = b;
-//     int size = stack_size(a);
-//     if (stack_size(b) > size)
-//         size = stack_size(b);
-//     ft_printf("\nA\t\tB\n\n");
-//     while (i <= size)
-//     {
-//         if (a != firstA || !i)
-//         {
-//             ft_printf("%d", a->n);
-//             a = a->next;
-//         }
-//         else
-//             ft_printf(" ");
-//         ft_printf("\t\t");
-//         if (b && (b != firstB || !i))
-//         {
-//             ft_printf("%d", b->n);
-//             b = b->next;
-//         }
-//         else
-//             ft_printf(" ");
-//         ft_printf("\n");
-//         i++;
-//     }
-//     ft_printf("\n");
-// }
+void	new_print_stack(t_stack *a, t_stack *b)
+{
+    int i = 0;
+    t_stack *firstA = a;
+    t_stack *firstB = b;
+    int size = stack_size(a);
+    if (stack_size(b) > size)
+        size = stack_size(b);
+    ft_printf("\nA\t\tB\n\n");
+    while (i <= size)
+    {
+        if (a != firstA || !i)
+        {
+            ft_printf("%d", a->n);
+            a = a->next;
+        }
+        else
+            ft_printf(" ");
+        ft_printf("\t\t");
+        if (b && (b != firstB || !i))
+        {
+            ft_printf("%d", b->n);
+            b = b->next;
+        }
+        else
+            ft_printf(" ");
+        ft_printf("\n");
+        i++;
+    }
+    ft_printf("\n");
+}
 
 void	lstclear(t_stack **lst)
 {
@@ -102,6 +102,7 @@ int	main(int argc, char **argv)
 		push(&a, &b, B);
 		push_number_to_b(&a, &b);
 	}
+	// new_print_stack(a, b);
 	lstclear(&a);
 	return (0);
 }
