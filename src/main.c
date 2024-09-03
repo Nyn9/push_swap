@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nferrad <nferrad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: clouaint <clouaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 13:07:42 by clouaint          #+#    #+#             */
-/*   Updated: 2024/09/01 20:16:37 by nferrad          ###   ########.fr       */
+/*   Updated: 2024/09/03 18:26:41 by clouaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,20 +89,55 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (-1);
 	a = fill_a(argc, argv);
+	a->size = stack_size(a);
 	if (!a || is_sort(a) || is_duplicate(a))
 	{
 		lstclear(&a);
 		return (-1);
 	}
-	if (stack_size(a) < 3)
+	if (a->size < 3)
 		sort_a(&a);
 	else
 	{
 		push(&a, &b, B);
+		ft_printf("%d\n", b->size);
 		push(&a, &b, B);
-		push_number_to_b(&a, &b);
+		// a->size = a->size ;
+		// b->size = 1;
+		// push_number_to_b(&a, &b);
+		// push_number_to_a(&a, &b);
 	}
-	// new_print_stack(a, b);
+	new_print_stack(a, b);
 	lstclear(&a);
 	return (0);
 }
+/*
+
+{
+	t_stack	*tmpa;
+	int		count;
+	int		gn;
+	int		prev_count;
+	int		target_b;
+
+	tmpa = *a;
+	prev_count = INT_MAX;
+	while (tmpa->next != *a)
+	{
+		count = 1;
+		target_b = get_target_b(tmpa->n, *b);
+		count -= double_rr(*a, *b, tmpa->n, target_b);
+		count += count_rotate(*a, tmpa->n, -1);
+		if (prev_count > count)
+			count += count_rotate(*b, target_b, rorr2(*b, *a, target_b, tmpa->n));
+		if (count < prev_count)
+		{
+			gn = tmpa->n;
+			prev_count = count;
+		}
+		tmpa = tmpa->next;
+	}
+	return (gn);
+}
+
+*/

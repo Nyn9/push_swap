@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nferrad <nferrad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: clouaint <clouaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:25:57 by nferrad           #+#    #+#             */
-/*   Updated: 2024/09/01 17:31:27 by nferrad          ###   ########.fr       */
+/*   Updated: 2024/09/03 18:23:10 by clouaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int	good_number_a(int nb, t_stack *a)
 {
-	t_stack	*first;
 	int		gn;
 	int		i;
 
-	first = a;
 	gn = 20000;
 	i = 0;
-	while (a != first || !i)
+	// ft_printf("%d\n", a->size);
+	while (i < a->size)
 	{
+		ft_printf("Here !");
 		if (a->n > nb && a->n < gn)
 			gn = a->n;
 		i++;
@@ -61,14 +61,20 @@ void	push_number_to_b(t_stack **a, t_stack **b)
 				rotate(b, ror, -1);
 			}
 			else
+			{
+				ft_printf("Here !");	
 				rotate(a, rorr(*a, cheap), A);
+				
+			}
 		}
 		while ((*b)->n != target_b)
+		{
 			rotate(b, rorr2(*b, *a, target_b, cheap), B);
+		}
 		push(a, b, B);
+		(*b)->size += 1;
 	}
 	sort_a(a);
-	push_number_to_a(a, b);
 }
 
 void	sort_a(t_stack **a)
@@ -100,19 +106,27 @@ void	push_number_to_a(t_stack **a, t_stack **b)
 
 	size = stack_size(*b);
 	i = 0;
-	mini = min(*a);
-	maxi = max(*a);
 	while (i <= size)
 	{
+		mini = min(*a);
+		maxi = max(*a);
 		while (((*b)->n > maxi || (*b)->n < mini)
-			&& rorr(*a, mini) != -1)
+			&& get_pos(mini, *a))
+		{
+			
+			
 			rotate(a, rorr(*a, mini), A);
+		}
 		while (((*b)->n < maxi && (*b)->n > mini)
-			&& rorr(*a, good_number_a((*b)->n, *a)) != -1)
+			&& get_pos(good_number_a((*b)->n, *a), *a))
+		{
 			rotate(a, rorr(*a, good_number_a((*b)->n, *a)), A);
+			// ft_printf("Here !");		
+		}
 		push(b, a, A);
+		// new_print_stack(*a, *b);
 		i++;
 	}
-	while (get_pos(min(*a), *a) != 0)
+	while (get_pos(min(*a), *a))
 		rotate(a, rorr(*a, min(*a)), A);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nferrad <nferrad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: clouaint <clouaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 16:03:09 by nferrad           #+#    #+#             */
-/*   Updated: 2024/09/01 20:13:21 by nferrad          ###   ########.fr       */
+/*   Updated: 2024/09/03 17:21:55 by clouaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 typedef struct s_stack
 {
+	int				size;
 	long			n;
 	struct s_stack	*next;
 	struct s_stack	*prev;
@@ -54,5 +55,7 @@ int		my_atoi(char *nptr);
 void	freestr(char **lst);
 void	lstclear(t_stack **lst);
 void	error(int nb, t_stack **stack, char *c, char **element);
+int		ft_find_index(t_stack *a, int nbr);
+void	assign_indexes(t_stack **a);
 
 #endif
