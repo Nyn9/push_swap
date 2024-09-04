@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clouaint <clouaint@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nferrad <nferrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:25:57 by nferrad           #+#    #+#             */
-/*   Updated: 2024/09/04 14:29:10 by clouaint         ###   ########.fr       */
+/*   Updated: 2024/09/04 23:13:03 by nferrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	push_number_to_b(t_stack **a, t_stack **b, int *size_a, int *size_b)
 
 	while (*size_a >= 2)
 	{
-		cheap = cheapest(a, b, *size_a, *size_b);
+		cheap = cheapest(*a, *b, *size_a, *size_b);
 		target_b = get_target_b(cheap, *b);
 		while ((*a)->n != cheap)
 		{

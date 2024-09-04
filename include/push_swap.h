@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clouaint <clouaint@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nferrad <nferrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 16:03:09 by nferrad           #+#    #+#             */
-/*   Updated: 2024/09/04 14:38:41 by clouaint         ###   ########.fr       */
+/*   Updated: 2024/09/04 23:13:16 by nferrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	new_print_stack(t_stack *a, t_stack *b);
 void	swap(t_stack **stack, int letter);
 void	rotate(t_stack **stack, int rotate, int letter);
 void	push(t_stack **src, t_stack **dest, int letter);
-int		cheapest(t_stack **a, t_stack **b, int size_a, int size_b);
+int		cheapest(t_stack *a, t_stack *b, int size_a, int size_b);
 int		max(t_stack *stack);
 int		min(t_stack *stack);
 int		get_pos(int element, t_stack *stack);

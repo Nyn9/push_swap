@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clouaint <clouaint@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nferrad <nferrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 16:52:04 by nferrad           #+#    #+#             */
-/*   Updated: 2024/09/04 12:52:48 by clouaint         ###   ########.fr       */
+/*   Updated: 2024/09/04 23:29:50 by nferrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,30 +69,36 @@ int	double_rr(t_stack *a, t_stack *b, int nb_a, int nb_b, int size_a)
 	return (nb_rotate);
 }
 
-int	cheapest(t_stack **a, t_stack **b, int size_a, int size_b)
+int	cheapest(t_stack *a, t_stack *b, int size_a, int size_b)
 {
-	t_stack	*tmpa;
 	int		count;
 	long	gn;
 	int		prev_count;
 	int		target_b;
+	int		i;
+	t_stack *tmpa;
 
-	tmpa = *a;
+	i = 0;
 	prev_count = INT_MAX;
+	tmpa = a;
 	while (tmpa)
 	{
 		count = 1;
-		target_b = get_target_b(tmpa->n, *b);
-		count += count_rotate(*b, target_b, rorr2(*b, *a, target_b, tmpa->n, size_a), size_b);
-		count += count_rotate(*a, tmpa->n, -1, size_a);
-		count -= double_rr(*a, *b, tmpa->n, target_b, size_a);
-		if (count < prev_count)
+		if (i < prev_count || size_a - i < prev_count)
 		{
-			gn = tmpa->n;
-			prev_count = count;
+			target_b = get_target_b(tmpa->n, b);
+			count -= double_rr(a, b, tmpa->n, target_b, size_a);
+			count += count_rotate(a, tmpa->n, -1, size_a);
+			count += count_rotate(b, target_b, rorr2(b, a, target_b, tmpa->n, size_a), size_b);
+			if (count < prev_count)
+			{
+				gn = tmpa->n;
+				prev_count = count;
+			}
 		}
+		i++;
 		tmpa = tmpa->next;
-		if (tmpa == *a)
+		if (tmpa == a)
 			break ;
 	}
 	return (gn);
