@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nferrad <nferrad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: clouaint <clouaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 13:07:42 by clouaint          #+#    #+#             */
-/*   Updated: 2024/09/04 23:12:09 by nferrad          ###   ########.fr       */
+/*   Updated: 2024/09/05 00:33:42 by clouaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,18 @@ void	new_print_stack(t_stack *a, t_stack *b)
         i++;
     }
     ft_printf("\n");
+}
+
+int calculate_move(t_stack *a, t_stack *b, int number_a, int size_a, int size_b)
+{
+	int count = 1;
+	int target_b = get_target_b(number_a, b);
+
+	count -= double_rr(a, b, number_a, target_b, size_a);
+	count += count_rotate(a, number_a, -1, size_a);
+	count += count_rotate(b, target_b, rorr2(b, a, target_b, number_a, size_a), size_b);
+
+	return count;
 }
 
 void	lstclear(t_stack **lst)
@@ -82,7 +94,7 @@ void	freestr(char **lst)
 
 void	check_stack(t_stack *a)
 {
-	if (!a || is_sort(a) || is_duplicate(a))
+	if (!a || is_sort(a) || is_duplicate(a) || a->next == a)
 	{
 		lstclear(&a);
 		exit(1);

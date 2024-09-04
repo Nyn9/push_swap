@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nferrad <nferrad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: clouaint <clouaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 16:52:04 by nferrad           #+#    #+#             */
-/*   Updated: 2024/09/04 23:29:50 by nferrad          ###   ########.fr       */
+/*   Updated: 2024/09/05 00:42:22 by clouaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,32 +74,25 @@ int	cheapest(t_stack *a, t_stack *b, int size_a, int size_b)
 	int		count;
 	long	gn;
 	int		prev_count;
-	int		target_b;
 	int		i;
 	t_stack *tmpa;
 
 	i = 0;
 	prev_count = INT_MAX;
 	tmpa = a;
-	while (tmpa)
+	while (tmpa != a || !i)
 	{
-		count = 1;
 		if (i < prev_count || size_a - i < prev_count)
 		{
-			target_b = get_target_b(tmpa->n, b);
-			count -= double_rr(a, b, tmpa->n, target_b, size_a);
-			count += count_rotate(a, tmpa->n, -1, size_a);
-			count += count_rotate(b, target_b, rorr2(b, a, target_b, tmpa->n, size_a), size_b);
+			count = calculate_move(a, b, tmpa->n, size_a, size_b);		
 			if (count < prev_count)
 			{
 				gn = tmpa->n;
 				prev_count = count;
 			}
 		}
-		i++;
 		tmpa = tmpa->next;
-		if (tmpa == a)
-			break ;
+		i++;
 	}
 	return (gn);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nferrad <nferrad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: clouaint <clouaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 16:03:09 by nferrad           #+#    #+#             */
-/*   Updated: 2024/09/04 23:13:16 by nferrad          ###   ########.fr       */
+/*   Updated: 2024/09/05 00:33:01 by clouaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,7 @@ int		my_atoi(char *nptr);
 void	freestr(char **lst);
 void	error(int nb, t_stack **lst, char *c, char **element);
 void	lstclear(t_stack **lst);
+int 	calculate_move(t_stack *a, t_stack *b, int number_a, int size_a, int size_b);
+int		double_rr(t_stack *a, t_stack *b, int nb_a, int nb_b, int size_a);
 
 #endif
