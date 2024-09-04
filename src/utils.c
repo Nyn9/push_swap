@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clouaint <clouaint@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nferrad <nferrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 16:51:28 by nferrad           #+#    #+#             */
-/*   Updated: 2024/09/03 18:21:34 by clouaint         ###   ########.fr       */
+/*   Updated: 2024/09/01 16:41:16 by nferrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,21 @@
 
 int	get_pos(int element, t_stack *stack)
 {
-	t_stack	*current;
-	int		pos;
+	t_stack	*first;
+	int		position;
 
-	pos = 0;
 	if (!stack)
 		return (-1);
-	current = stack;
-	while (current)
+	position = 0;
+	first = stack;
+	while (stack->next != first)
 	{
-		if (element == current->n)
-			return (pos);
-		pos++;
-		// ft_printf("n : %d // next : %d // prev : %d // element : %d\n", stack->n, stack->next->n, stack->prev->n, element);
-		current = current->next;
-		if (current->next == stack)
-			break ;
+		if (stack->n == element)
+			return (position);
+		position++;
+		stack = stack->next;
 	}
-	return (pos);
+	return (position);
 }
 
 int	stack_size(t_stack *stack)

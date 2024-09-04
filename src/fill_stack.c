@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   fill_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clouaint <clouaint@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nferrad <nferrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 15:12:14 by clouaint          #+#    #+#             */
-/*   Updated: 2024/09/03 17:22:54 by clouaint         ###   ########.fr       */
+/*   Updated: 2024/09/01 20:13:58 by nferrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	lstsize(t_stack *lst)
+{
+	t_stack	*first;
+	int		i;
+
+	i = 0;
+	first = lst;
+	while (lst->next != first)
+	{
+		i++;
+		lst = lst->next;
+	}
+	return (i);
+}
 
 t_stack	*lstnew(long content)
 {
