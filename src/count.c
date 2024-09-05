@@ -74,7 +74,7 @@ int	double_rr(t_stack *a, t_stack *b, int nb_a, int nb_b)
 	return (nb_rotate);
 }
 
-int	cheapest(t_stack *a, t_stack *b, int size_a, int size_b)
+int	cheapest(t_stack *a, t_stack *b, int size_a)
 {
 	int		count;
 	long	gn;
@@ -89,7 +89,7 @@ int	cheapest(t_stack *a, t_stack *b, int size_a, int size_b)
 	{
 		if (i < prev_count || size_a - i < prev_count)
 		{
-			count = calculate_move(a, b, tmpa->n, size_a, size_b);
+			count = calculate_move(a, b, tmpa->n, size_a);
 			if (count < prev_count)
 			{
 				gn = tmpa->n;

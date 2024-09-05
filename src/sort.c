@@ -50,7 +50,7 @@ void	push_number_to_b(t_stack **a, t_stack **b, int *size_a, int *size_b)
 
 	while (*size_a >= 2)
 	{
-		cheap = cheapest(*a, *b, *size_a, *size_b);
+		cheap = cheapest(*a, *b, *size_a);
 		target_b = get_target_b(cheap, *b);
 		while ((*a)->n != cheap)
 		{

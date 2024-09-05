@@ -29,12 +29,11 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }					t_stack;
 
-// void print_stack(t_stack *stack);
 void	new_print_stack(t_stack *a, t_stack *b);
 void	swap(t_stack **stack, int letter);
 void	rotate(t_stack **stack, int rotate, int letter);
 void	push(t_stack **src, t_stack **dest, int letter);
-int		cheapest(t_stack *a, t_stack *b, int size_a, int size_b);
+int		cheapest(t_stack *a, t_stack *b, int size_a);
 int		max(t_stack *stack);
 int		min(t_stack *stack);
 int		get_pos(int element, t_stack *stack);
@@ -54,7 +53,7 @@ int		my_atoi(char *nptr);
 void	freestr(char **lst);
 void	error(int nb, t_stack **lst, char *c, char **element);
 void	lstclear(t_stack **lst);
-int 	calculate_move(t_stack *a, t_stack *b, int number_a, int size_a, int size_b);
+int		calculate_move(t_stack *a, t_stack *b, int number_a, int size_a);
 int		double_rr(t_stack *a, t_stack *b, int nb_a, int nb_b);
 
 #endif
