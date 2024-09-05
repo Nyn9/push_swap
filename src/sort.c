@@ -54,7 +54,7 @@ void	push_number_to_b(t_stack **a, t_stack **b, int *size_a, int *size_b)
 		target_b = get_target_b(cheap, *b);
 		while ((*a)->n != cheap)
 		{
-			if (rorr(*a, cheap, *size_a) == rorr2(*b, *a, target_b, cheap, *size_a))
+			if (rorr(*a, cheap, *size_a) == rorr2(*b, *a, target_b, cheap))
 			{
 				ror = rorr(*a, cheap, *size_a);
 				rotate(a, ror, AB);
@@ -64,7 +64,7 @@ void	push_number_to_b(t_stack **a, t_stack **b, int *size_a, int *size_b)
 				rotate(a, rorr(*a, cheap, *size_a), A);
 		}
 		while ((*b)->n != target_b)
-			rotate(b, rorr2(*b, *a, target_b, cheap, *size_a), B);
+			rotate(b, rorr2(*b, *a, target_b, cheap), B);
 		push(a, b, B);
 		(*size_a)--;
 		(*size_b)++;
@@ -74,6 +74,7 @@ void	push_number_to_b(t_stack **a, t_stack **b, int *size_a, int *size_b)
 void	sort_a(t_stack **a, t_stack **b, int *size_a, int *size_b)
 {
 	t_stack	*mini;
+
 	mini = *a;
 	if (*size_a < 2)
 	{

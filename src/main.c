@@ -12,48 +12,50 @@
 
 #include "push_swap.h"
 
-void	new_print_stack(t_stack *a, t_stack *b)
+// void	new_print_stack(t_stack *a, t_stack *b)
+// {
+//     int i = 0;
+//     t_stack *firstA = a;
+//     t_stack *firstB = b;
+//     int size = stack_size(a);
+//     if (stack_size(b) > size)
+//         size = stack_size(b);
+//     ft_printf("\nA\t\tB\n\n");
+//     while (i <= size)
+//     {
+//         if (a != firstA || !i)
+//         {
+//             ft_printf("%d", a->n);
+//             a = a->next;
+//         }
+//         else
+//             ft_printf(" ");
+//         ft_printf("\t\t");
+//         if (b && (b != firstB || !i))
+//         {
+//             ft_printf("%d", b->n);
+//             b = b->next;
+//         }
+//         else
+//             ft_printf(" ");
+//         ft_printf("\n");
+//         i++;
+//     }
+//     ft_printf("\n");
+// }
+int	calculate_move(t_stack *a, t_stack *b, int number_a, int size_a)
 {
-    int i = 0;
-    t_stack *firstA = a;
-    t_stack *firstB = b;
-    int size = stack_size(a);
-    if (stack_size(b) > size)
-        size = stack_size(b);
-    ft_printf("\nA\t\tB\n\n");
-    while (i <= size)
-    {
-        if (a != firstA || !i)
-        {
-            ft_printf("%d", a->n);
-            a = a->next;
-        }
-        else
-            ft_printf(" ");
-        ft_printf("\t\t");
-        if (b && (b != firstB || !i))
-        {
-            ft_printf("%d", b->n);
-            b = b->next;
-        }
-        else
-            ft_printf(" ");
-        ft_printf("\n");
-        i++;
-    }
-    ft_printf("\n");
-}
+	int	count;
+	int	target_b;
+	int	size_b;
 
-int calculate_move(t_stack *a, t_stack *b, int number_a, int size_a, int size_b)
-{
-	int count = 1;
-	int target_b = get_target_b(number_a, b);
-
-	count -= double_rr(a, b, number_a, target_b, size_a);
+	count = 1;
+	target_b = get_target_b(number_a, b);
+	size_b = stack_size(b);
+	count -= double_rr(a, b, number_a, target_b);
 	count += count_rotate(a, number_a, -1, size_a);
-	count += count_rotate(b, target_b, rorr2(b, a, target_b, number_a, size_a), size_b);
-
-	return count;
+	count += count_rotate(b, target_b, rorr2(b, a, target_b, number_a), size_b);
+	return (count);
 }
 
 void	lstclear(t_stack **lst)
@@ -126,7 +128,6 @@ int	main(int argc, char **argv)
 		push_number_to_b(&a, &b, &size_a, &size_b);
 		push_number_to_a(&a, &b, &size_a, &size_b);
 	}
-	// new_print_stack(a, b);
 	lstclear(&a);
 	return (0);
 }

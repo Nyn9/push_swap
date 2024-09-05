@@ -43,7 +43,7 @@ int		stack_size(t_stack *stack);
 int		count_rotate(t_stack *stack, int nb, int ror, int size);
 int		get_target_b(int nb, t_stack *b);
 int		rorr(t_stack *stack, int nb, int size);
-int		rorr2(t_stack *b, t_stack *a, int nb_b, int nb_a, int size_a);
+int		rorr2(t_stack *b, t_stack *a, int nb_b, int nb_a);
 void	sort_a(t_stack **a, t_stack **b, int *size_a, int *size_b);
 void	push_number_to_a(t_stack **a, t_stack **b, int *size_a, int *size_b);
 void	push_number_to_b(t_stack **a, t_stack **b, int *size_a, int *size_b);
@@ -55,6 +55,6 @@ void	freestr(char **lst);
 void	error(int nb, t_stack **lst, char *c, char **element);
 void	lstclear(t_stack **lst);
 int 	calculate_move(t_stack *a, t_stack *b, int number_a, int size_a, int size_b);
-int		double_rr(t_stack *a, t_stack *b, int nb_a, int nb_b, int size_a);
+int		double_rr(t_stack *a, t_stack *b, int nb_a, int nb_b);
 
 #endif

@@ -25,13 +25,16 @@ int	rorr(t_stack *stack, int nb, int size)
 		return (RROTATE);
 }
 
-int	rorr2(t_stack *b, t_stack *a, int nb_b, int nb_a, int size_a)
+int	rorr2(t_stack *b, t_stack *a, int nb_b, int nb_a)
 {
 	int	size_b;
+	int	size_a;
 
+	size_a = stack_size(a);
 	size_b = stack_size(b);
 	if (get_pos(nb_a, a) != 0
-		&& count_rotate(b, nb_b, rorr(a, nb_a, size_a), size_b) - count_rotate(a, nb_a, -1, size_a)
+		&& count_rotate(b, nb_b, rorr(a, nb_a, size_a),
+			size_b) - count_rotate(a, nb_a, -1, size_a)
 		<= count_rotate(b, nb_b, -1, size_b))
 		return (rorr(a, nb_a, size_a));
 	return (rorr(b, nb_b, size_b));
@@ -53,17 +56,19 @@ int	count_rotate(t_stack *stack, int nb, int ror, int size)
 	return (count);
 }
 
-int	double_rr(t_stack *a, t_stack *b, int nb_a, int nb_b, int size_a)
+int	double_rr(t_stack *a, t_stack *b, int nb_a, int nb_b)
 {
 	int	nb_rotate;
+	int	size_a;
 
+	size_a = stack_size(a);
 	nb_rotate = 0;
-	if (rorr(a, nb_a, size_a) != rorr2(b, a, nb_b, nb_a, size_a))
+	if (rorr(a, nb_a, size_a) != rorr2(b, a, nb_b, nb_a))
 		return (nb_rotate);
 	while (get_pos(nb_a, a) != 0 && get_pos(nb_b, b) != 0)
 	{
 		nb_rotate++;
-		rotate(&b, rorr2(b, a, nb_b, nb_a, size_a), -1);
+		rotate(&b, rorr2(b, a, nb_b, nb_a), -1);
 		rotate(&a, rorr(a, nb_a, size_a), -1);
 	}
 	return (nb_rotate);
@@ -75,7 +80,7 @@ int	cheapest(t_stack *a, t_stack *b, int size_a, int size_b)
 	long	gn;
 	int		prev_count;
 	int		i;
-	t_stack *tmpa;
+	t_stack	*tmpa;
 
 	i = 0;
 	prev_count = INT_MAX;
@@ -84,7 +89,7 @@ int	cheapest(t_stack *a, t_stack *b, int size_a, int size_b)
 	{
 		if (i < prev_count || size_a - i < prev_count)
 		{
-			count = calculate_move(a, b, tmpa->n, size_a, size_b);		
+			count = calculate_move(a, b, tmpa->n, size_a, size_b);
 			if (count < prev_count)
 			{
 				gn = tmpa->n;
